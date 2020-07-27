@@ -166,9 +166,11 @@ class Fun(Cog):
         
     @commands.command()
     async def say(self,ctx,* ,message):
-        """Make the bot say something"""
+        """Make the bot say something!"""
         msg = escape(message,mass_mentions=True)
         await ctx.send(msg)
+        await ctx.message.delete()
+    
     @commands.command()
     async def reverse(self, ctx, *, text):
         """!txeT ruoY esreveR"""
@@ -228,7 +230,7 @@ class Fun(Cog):
     @commands.command()
     @commands.guild_only()
     async def roast(self, ctx,*, user: discord.Member = None):
-        '''Roast someone! If you suck at roasting them yourself.'''
+        '''Roast someone! :fire:'''
    
         msg = f"Hey, {user.mention}! " if user is not None else ""
         roasts = ["I'd give you a nasty look but it seems you've already got one.", "If you're going to complain about a character, at least don't lag on quickplay. That doesn't look good on your already diminished reputation, does it?", "The only way you'll get High Level Smash Player is if you stopped waiting around and got good at the game.", "It looks like you got disconnected. *you say something* Oh what was that? Sorry I can't hear people who don't use LAN.", "I'd like to see things from your point of view, but I can't seem to muster the courage to pocket Joker. Oh well, at least I won't get carried.", "Scientists say the universe is made up of neutrons, protons and electrons. They forgot to mention morons.", "Why is it acceptable for you to be an idiot but not for me to point it out?", "Just because you have a character on Elite Smash doesn't mean you're good.", "Someday you'll go far... and I hope you stay there.", "Which controller produces the best results in competitive play? Not one with only a B button, that's for sure.", "I don't know what makes you so stupid, but it really works.", "You want to switch Gangs? Go ahead, disappoint your Gang. They'll love your decision.", "Brains aren't everything. In your case, they're nothing.", "Does Luigi makes you mad? I don't care, I'll use more grab.", "Quick - check your face! *gasp* I just found your nose in my business.", "It's better to let someone think you're stupid than open your mouth and prove it.", "I'd 1v1 you in <#698549361562353912>, but I like having good connection. Thanks!", "You have the right to remain silent because whatever you say will probably be stupid anyway."]
