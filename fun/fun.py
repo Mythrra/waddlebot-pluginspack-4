@@ -112,7 +112,7 @@ class Fun(Cog):
     async def flip(self,ctx):
         """Flip a coin"""
         answer = choice(["HEADS!*","TAILS!*"])
-        await ctx.send(f"*Flips a coin and...{answer}")
+        await ctx.send(f"{author.mention} *Flips a coin and...* **it's {answer}!**")
         
     @commands.command()
     async def rps(self,ctx,your_choice:RPSParser):
@@ -148,12 +148,8 @@ class Fun(Cog):
         """
         embed = discord.Embed(title='Question: | :8ball:', description=question, color=0x2332e4)
         embed.add_field(name='Answer:', value=choice(self.ball), inline=False)
+        await ctx.send(embed=embed)        
         
-        if question.endswith("?") and question != "?":
-            await ctx.send(embed=embed)
-        else:
-            await ctx.send("That doesn't look like a question.")
-
     @commands.command(aliases=["badjoke"])
     async def dadjoke(self,ctx):
         """Gives a random Dadjoke"""
@@ -178,6 +174,7 @@ class Fun(Cog):
         """!txeT ruoY esreveR"""
         text =  escape("".join(list(reversed(str(text)))),mass_mentions=True)
         await ctx.send(text)
+        await ctx.message.delete()
         
     @commands.command()
     async def meme(self, ctx):
@@ -234,9 +231,9 @@ class Fun(Cog):
         '''Roast someone! If you suck at roasting them yourself.'''
    
         msg = f"Hey, {user.mention}! " if user is not None else ""
-        roasts = ["I'd give you a nasty look but you've already got one.", "If you're going to be two-faced, at least make one of them pretty.", "The only way you'll ever get laid is if you crawl up a chicken's ass and wait.", "It looks like your face caught fire and someone tried to put it out with a hammer.", "I'd like to see things from your point of view, but I can't seem to get my head that far up your ass.", "Scientists say the universe is made up of neutrons, protons and electrons. They forgot to mention morons.", "Why is it acceptable for you to be an idiot but not for me to point it out?", "Just because you have one doesn't mean you need to act like one.", "Someday you'll go far... and I hope you stay there.", "Which sexual position produces the ugliest children? Ask your mother.", "No, those pants don't make you look fatter - how could they?", "Save your breath - you'll need it to blow up your date.", "If you really want to know about mistakes, you should ask your parents.", "Whatever kind of look you were going for, you missed.", "Hey, you have something on your chin... no, the 3rd one down.", "I don't know what makes you so stupid, but it really works.", "You are proof that evolution can go in reverse.", "Brains aren't everything. In your case they're nothing.", "I thought of you today. It reminded me to take the garbage out.", "You're so ugly when you look in the mirror, your reflection looks away.", "Quick - check your face! I just found your nose in my business.", "It's better to let someone think you're stupid than open your mouth and prove it.", "You're such a beautiful, intelligent, wonderful person. Oh I'm sorry, I thought we were having a lying competition.", "I'd slap you but I don't want to make your face look any better.", "You have the right to remain silent because whatever you say will probably be stupid anyway."]
+        roasts = ["I'd give you a nasty look but it seems you've already got one.", "If you're going to complain about a character, at least don't lag on quickplay. That doesn't look good on your already diminished reputation, does it?", "The only way you'll get High Level Smash Player is if you stopped waiting around and got good at the game.", "It looks like you got disconnected. *you say something* Oh what was that? Sorry I can't hear people who don't use LAN.", "I'd like to see things from your point of view, but I can't seem to muster the courage to pocket Joker. Oh well, at least I won't get carried.", "Scientists say the universe is made up of neutrons, protons and electrons. They forgot to mention morons.", "Why is it acceptable for you to be an idiot but not for me to point it out?", "Just because you have a character on Elite Smash doesn't mean you're good.", "Someday you'll go far... and I hope you stay there.", "Which controller produces the best results in competitive play? Not one with only a B button, that's for sure.", "I don't know what makes you so stupid, but it really works.", "You want to switch Gangs? Go ahead, disappoint your Gang. They'll love your decision.", "Brains aren't everything. In your case, they're nothing.", "Does Luigi makes you mad? I don't care, I'll use more grab.", "Quick - check your face! *gasp* I just found your nose in my business.", "It's better to let someone think you're stupid than open your mouth and prove it.", "I'd 1v1 you in <#698549361562353912>, but I like having good connection. Thanks!", "You have the right to remain silent because whatever you say will probably be stupid anyway."]
         if str(user.id) == str(ctx.bot.user.id):
-            return await ctx.send(f"Uh?!! Nice try! I am not going to roast myself. Instead I am going to roast you now.\n\n {ctx.author.mention} {choice(roasts)}")
+            return await ctx.send(f"NANI?!! Nice try! I'm not going to roast myself. How about I roast you? \n\n {ctx.author.mention} {choice(roasts)}")
         await ctx.send(f"{msg} {choice(roasts)}")
 
     @commands.command(aliases=['sc'])
